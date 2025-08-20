@@ -7,8 +7,3 @@ program
   .usage('[options]')
 
 program.parse()
-
-console.log('test code js')
-console.log('test code js')
-console.log('test code js')
-console.log('test code js')
