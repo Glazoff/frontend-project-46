@@ -9,3 +9,6 @@ program
 program.parse()
 
 console.log('test code js')
+console.log('test code js')
+console.log('test code js')
+console.log('test code js')
