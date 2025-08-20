@@ -7,5 +7,3 @@ program
   .usage('[options]')
 
 program.parse()
-
-// add test check sonarcloud
