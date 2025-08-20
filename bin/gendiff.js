@@ -7,3 +7,5 @@ program
   .usage('[options]')
 
 program.parse()
+
+console.log('test code js')
