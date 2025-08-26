@@ -1,3 +1,3 @@
 const extensions = ['.json', '.txt']
-
-export { extensions }
+const tab = ' '
+export { extensions, tab }
