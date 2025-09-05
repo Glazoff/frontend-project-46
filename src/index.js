@@ -8,20 +8,20 @@ function diff(obj1, obj2) {
   const keys2 = Object.keys(obj2)
   const keys = _.union(keys1, keys2).sort()
 
-  let result = '{ \n'
+  let result = '{\n'
   for (const key of keys) {
     const isBoth = Object.hasOwn(obj1, key) && Object.hasOwn(obj2, key)
 
     if (isBoth && obj2[key] === obj1[key]) {
-      result += `${tab}  ${key}: ${obj1[key]} \n`
+      result += `${tab}  ${key}: ${obj1[key]}\n`
       continue
     }
     if (Object.hasOwn(obj1, key)) {
-      result += `${tab}- ${key}: ${obj1[key]} \n`
+      result += `${tab}- ${key}: ${obj1[key]}\n`
     }
 
     if (Object.hasOwn(obj2, key)) {
-      result += `${tab}+ ${key}: ${obj2[key]} \n`
+      result += `${tab}+ ${key}: ${obj2[key]}\n`
     }
   }
 
@@ -40,5 +40,9 @@ export default function () {
       console.log(diff(parserFile(filepath1), parserFile(filepath2)))
     })
 
-  program.parse()
+  if (process.argv.length > 2) {
+    program.parse()
+  }
 }
+
+export { diff }
