@@ -37,8 +37,6 @@ jobs:
       - run: make test
       - run: make test-coverage
       - name: SonarQube Scan
-        # Пропускаем шаг если это pull request
-        if: github.event_name != 'pull_request'
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
