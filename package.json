@@ -1,6 +1,6 @@
 {
   "name": "@hexlet/code",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "[![Actions Status](https://github.com/Glazoff/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Glazoff/frontend-project-46/actions)",
   "main": "src/index.js",
   "type": "module",
