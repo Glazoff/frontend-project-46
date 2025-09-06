@@ -1,3 +1,3 @@
-const extensions = ['.json', '.txt']
+const extensions = ['.json', '.txt', 'yaml']
 const tab = ' '
 export { extensions, tab }

@@ -2,10 +2,19 @@ import { expect, test } from '@jest/globals'
 import { diff } from '../src/index.js'
 import parserFile from '../src/ParserFile.js'
 
-const path1 = '__fixtures__/file1.json'
-const path2 = '__fixtures__/file2.json'
-const unsupportedFormat = '__fixtures__/unsupported-format.xml'
-const nonExistentFile = './sameFile.json'
+const paths = {
+  json: {
+    first: '__fixtures__/file1.json',
+    second: '__fixtures__/file2.json',
+  },
+  yaml: {
+    first: '__fixtures__/file1.yaml',
+    second: '__fixtures__/file2.yaml',
+  },
+}
+
+const fileNotFound = './sameFile.json'
+const incorrectExtensionFile = '__fixtures__/unsupported-format.xml'
 
 const correctResult = `{
  - follow: false
@@ -17,15 +26,20 @@ const correctResult = `{
 }`
 
 test('flat files', () => {
-  expect(diff(parserFile(path1), parserFile(path2))).toBe(correctResult)
+  const { first, second } = paths.json
+
+  expect(diff(parserFile(first), parserFile(second))).toBe(correctResult)
 })
 
 test('file not found', () => {
-  expect(() => diff(parserFile(path1), parserFile(nonExistentFile)))
+  const { first } = paths.json
+
+  expect(() => diff(parserFile(first), parserFile(fileNotFound)))
     .toThrow('File not found')
 })
 
 test('support extensions file', () => {
-  expect(() => diff(parserFile(unsupportedFormat), parserFile(unsupportedFormat)))
+  const { second } = paths.json
+  expect(() => diff(parserFile(incorrectExtensionFile), parserFile(second)))
     .toThrow('Not support extensions file')
 })
