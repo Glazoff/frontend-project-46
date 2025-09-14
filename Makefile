@@ -16,5 +16,5 @@ lint:
 test:
 	npm test
 
-make test-coverage:
+test-coverage:
 	npm run test:coverage

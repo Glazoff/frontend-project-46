@@ -1,4 +1,5 @@
-import { expect, test } from '@jest/globals'
+import { expect, jest, test } from '@jest/globals'
+import fs from 'fs'
 import { diff } from '../src/index.js'
 import parserFile from '../src/ParserFile.js'
 
@@ -7,9 +8,9 @@ const paths = {
     first: '__fixtures__/file1.json',
     second: '__fixtures__/file2.json',
   },
-  yaml: {
-    first: '__fixtures__/file1.yaml',
-    second: '__fixtures__/file2.yaml',
+  yml: {
+    first: '__fixtures__/file1.yml',
+    second: '__fixtures__/file2.yml',
   },
 }
 
@@ -25,21 +26,44 @@ const correctResult = `{
  + verbose: true
 }`
 
-test('flat files', () => {
+afterEach(() => {
+  jest.restoreAllMocks()
+})
+
+test('flat files json', () => {
   const { first, second } = paths.json
 
   expect(diff(parserFile(first), parserFile(second))).toBe(correctResult)
 })
 
-test('file not found', () => {
-  const { first } = paths.json
+test('flat files yml', () => {
+  const { first, second } = paths.yml
 
-  expect(() => diff(parserFile(first), parserFile(fileNotFound)))
+  expect(diff(parserFile(first), parserFile(second))).toBe(correctResult)
+})
+
+test('file not found', () => {
+  expect(() => parserFile(fileNotFound))
     .toThrow('File not found')
 })
 
 test('support extensions file', () => {
-  const { second } = paths.json
-  expect(() => diff(parserFile(incorrectExtensionFile), parserFile(second)))
+  expect(() => parserFile(incorrectExtensionFile))
     .toThrow('Not support extensions file')
+})
+
+test('fail readFileSync in parserFile', () => {
+  const { first } = paths.yml
+
+  const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {})
+
+  const fsSpy = jest.spyOn(fs, 'readFileSync')
+
+  fsSpy.mockImplementation(() => {
+    throw new Error('Permission denied')
+  })
+
+  const result = parserFile(first)
+  expect(consoleErrorSpy).toHaveBeenCalled()
+  expect(result).toBeUndefined()
 })
