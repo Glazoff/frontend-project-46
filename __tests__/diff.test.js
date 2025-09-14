@@ -1,11 +1,21 @@
-import { expect, test } from '@jest/globals'
+import { expect, jest, test } from '@jest/globals'
+import fs from 'fs'
 import { diff } from '../src/index.js'
 import parserFile from '../src/ParserFile.js'
 
-const path1 = '__fixtures__/file1.json'
-const path2 = '__fixtures__/file2.json'
-const unsupportedFormat = '__fixtures__/unsupported-format.xml'
-const nonExistentFile = './sameFile.json'
+const paths = {
+  json: {
+    first: '__fixtures__/file1.json',
+    second: '__fixtures__/file2.json',
+  },
+  yml: {
+    first: '__fixtures__/file1.yml',
+    second: '__fixtures__/file2.yml',
+  },
+}
+
+const fileNotFound = './sameFile.json'
+const incorrectExtensionFile = '__fixtures__/unsupported-format.xml'
 
 const correctResult = `{
  - follow: false
@@ -16,16 +26,44 @@ const correctResult = `{
  + verbose: true
 }`
 
-test('flat files', () => {
-  expect(diff(parserFile(path1), parserFile(path2))).toBe(correctResult)
+afterEach(() => {
+  jest.restoreAllMocks()
+})
+
+test('flat files json', () => {
+  const { first, second } = paths.json
+
+  expect(diff(parserFile(first), parserFile(second))).toBe(correctResult)
+})
+
+test('flat files yml', () => {
+  const { first, second } = paths.yml
+
+  expect(diff(parserFile(first), parserFile(second))).toBe(correctResult)
 })
 
 test('file not found', () => {
-  expect(() => diff(parserFile(path1), parserFile(nonExistentFile)))
+  expect(() => parserFile(fileNotFound))
     .toThrow('File not found')
 })
 
 test('support extensions file', () => {
-  expect(() => diff(parserFile(unsupportedFormat), parserFile(unsupportedFormat)))
+  expect(() => parserFile(incorrectExtensionFile))
     .toThrow('Not support extensions file')
+})
+
+test('fail readFileSync in parserFile', () => {
+  const { first } = paths.yml
+
+  const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {})
+
+  const fsSpy = jest.spyOn(fs, 'readFileSync')
+
+  fsSpy.mockImplementation(() => {
+    throw new Error('Permission denied')
+  })
+
+  const result = parserFile(first)
+  expect(consoleErrorSpy).toHaveBeenCalled()
+  expect(result).toBeUndefined()
 })

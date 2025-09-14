@@ -1,24 +1,37 @@
-import { existsSync, readFileSync } from 'fs'
+import fs from 'fs'
+import yaml from 'js-yaml'
 import { extname, resolve } from 'path'
 import { cwd } from 'process'
 import { extensions } from './const.js'
 
-export default function (path) {
-  const ext = extname(path)
+const parses = {
+  json: (data) => {
+    return JSON.parse(data)
+  },
+  yaml: (data) => {
+    return yaml.load(data)
+  },
+  yml: (data) => {
+    return yaml.load(data)
+  },
+}
 
-  const isJSON = ext === '.json'
+export default function (path) {
+  const ext = extname(path).slice(1)
+
   const isValid = extensions.includes(ext)
 
   const absolutePath = resolve(cwd(), path)
-  const isExist = existsSync(absolutePath)
+  const isExist = fs.existsSync(absolutePath)
 
   if (!isExist) throw Error('File not found.')
   if (!isValid) throw Error('Not support extensions file')
 
   try {
-    const data = readFileSync(absolutePath, { encoding: 'utf-8' })
+    const data = fs.readFileSync(absolutePath, { encoding: 'utf-8' })
 
-    return isJSON ? JSON.parse(data) : data.toString()
+    const parser = parses[ext]
+    return parser(data)
   }
   catch (err) {
     console.error(`Error reading ${path}:`, err)
