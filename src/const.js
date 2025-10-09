@@ -1,3 +1,4 @@
 const extensions = ['json', 'yaml', 'yml']
-const tab = ' '
+const tab = '  '
+
 export { extensions, tab }
