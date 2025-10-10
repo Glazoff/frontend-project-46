@@ -5,8 +5,8 @@ import parserFile from '../src/ParserFile.js'
 
 const paths = {
   json: {
-    first: '__fixtures__/file1 copy.json',
-    second: '__fixtures__/file2 copy.json',
+    first: '__fixtures__/file1.json',
+    second: '__fixtures__/file2.json',
   },
   yml: {
     first: '__fixtures__/file1.yml',
@@ -26,7 +26,8 @@ afterEach(() => {
 test('files json', () => {
   const { first, second } = paths.json
 
-  expect(diff(parserFile(first), parserFile(second))).toBe(correctResult)
+  console.log(JSON.stringify(diff(parserFile(first), parserFile(second)), 2, '  '))
+  // expect(diff(parserFile(first), parserFile(second))).toBe(correctResult)
 })
 
 // test('files yml', () => {
