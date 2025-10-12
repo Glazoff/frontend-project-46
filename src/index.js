@@ -2,22 +2,9 @@ import { program } from 'commander'
 import _ from 'lodash'
 import parserFile from './ParserFile.js'
 import isObject from './utils/isObject.js'
-
-const filedStatus = {
-  NOT_DIFF: 'not diff',
-  ADDED: 'added',
-  DELETED: 'deleted',
-  MODIFIED: 'modified'
-}
+import { filedStatus } from './const.js'
 
 const { NOT_DIFF, ADDED, DELETED, MODIFIED } = filedStatus
-
-const fieldMapping = {
-  [NOT_DIFF]: ['only'],
-  [ADDED]: ['added'], // plus
-  [DELETED]: ['deleted'], // minus
-  [MODIFIED]: ['added', 'deleted']
-}
 
 function diff(firstData, secondData) {
   const iter = (obj1, obj2, depth = 1) => {
@@ -28,7 +15,6 @@ function diff(firstData, secondData) {
     for (const key of keys) {
       const body = {
         type: NOT_DIFF,
-        name: key,
         value: {
           deleted: null,
           only: null,
