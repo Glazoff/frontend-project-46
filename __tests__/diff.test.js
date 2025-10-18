@@ -1,7 +1,7 @@
 import { expect, jest, test } from '@jest/globals'
 import fs from 'fs'
 import { diff } from '../src/index.js'
-import parserFile from '../src/ParserFile.js'
+import parserFile from '../src/parserFile.js'
 import { stylish, plain } from '../src/formatters/index.js'
 
 const paths = {
