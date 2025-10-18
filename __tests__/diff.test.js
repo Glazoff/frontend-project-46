@@ -2,6 +2,7 @@ import { expect, jest, test } from '@jest/globals'
 import fs from 'fs'
 import { diff } from '../src/index.js'
 import parserFile from '../src/ParserFile.js'
+import stylish from '../src/formatters/stylish.js'
 
 const paths = {
   json: {
@@ -17,29 +18,22 @@ const paths = {
 const fileNotFound = './sameFile.json'
 const incorrectExtensionFile = '__fixtures__/unsupported-format.xml'
 
-const correctResult = `{
- - follow: false
-   host: hexlet.io
- - proxy: 123.234.53.22
- - timeout: 50
- + timeout: 20
- + verbose: true
-}`
+const correctResult = fs.readFileSync('__fixtures__/result.txt', { encoding: 'utf-8' })
 
 afterEach(() => {
   jest.restoreAllMocks()
 })
 
-test('flat files json', () => {
+test('files json', () => {
   const { first, second } = paths.json
 
-  expect(diff(parserFile(first), parserFile(second))).toBe(correctResult)
+  expect(stylish(diff(parserFile(first), parserFile(second)))).toBe(correctResult)
 })
 
-test('flat files yml', () => {
+test('files yml', () => {
   const { first, second } = paths.yml
 
-  expect(diff(parserFile(first), parserFile(second))).toBe(correctResult)
+  expect(stylish(diff(parserFile(first), parserFile(second)))).toBe(correctResult)
 })
 
 test('file not found', () => {
@@ -55,7 +49,7 @@ test('support extensions file', () => {
 test('fail readFileSync in parserFile', () => {
   const { first } = paths.yml
 
-  const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {})
+  const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => { })
 
   const fsSpy = jest.spyOn(fs, 'readFileSync')
 
