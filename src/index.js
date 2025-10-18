@@ -3,8 +3,7 @@ import _ from 'lodash'
 import { isObject } from './utils/index.js'
 import parserFile from './ParserFile.js'
 import { filedStatus } from './const.js'
-import stylesh from './formatters/stylish'
-import plain from './formatters/plain'
+import { stylish, plain } from './formatters/index.js'
 
 const { NOT_DIFF, ADDED, DELETED, MODIFIED } = filedStatus
 
@@ -77,7 +76,7 @@ export default function () {
       const result = diff(parserFile(filepath1), parserFile(filepath2))
 
       if (options.format === 'stylish') {
-        console.log(stylesh(result))
+        console.log(stylish(result))
       }
 
       if (options.format === 'plain') {

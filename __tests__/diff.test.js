@@ -2,8 +2,7 @@ import { expect, jest, test } from '@jest/globals'
 import fs from 'fs'
 import { diff } from '../src/index.js'
 import parserFile from '../src/ParserFile.js'
-import stylish from '../src/formatters/stylish'
-import plain from '../src/formatters/plain'
+import { stylish, plain } from '../src/formatters/index.js'
 
 const paths = {
   json: {
