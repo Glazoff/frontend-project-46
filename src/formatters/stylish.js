@@ -1,5 +1,12 @@
-import { newline, fieldMapping } from '../const.js'
+import { newline, filedStatus } from '../const.js'
 import isObject from '../utils/isObject.js'
+
+const fieldMapping = {
+  [filedStatus.NOT_DIFF]: ['only'],
+  [filedStatus.ADDED]: ['added'], // plus
+  [filedStatus.DELETED]: ['deleted'], // minus
+  [filedStatus.MODIFIED]: ['deleted', 'added'],
+}
 
 const badgeMapping = {
   added: '+',

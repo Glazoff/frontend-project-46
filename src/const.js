@@ -7,11 +7,5 @@ const filedStatus = {
   DELETED: 'deleted',
   MODIFIED: 'modified',
 }
-const fieldMapping = {
-  [filedStatus.NOT_DIFF]: ['only'],
-  [filedStatus.ADDED]: ['added'], // plus
-  [filedStatus.DELETED]: ['deleted'], // minus
-  [filedStatus.MODIFIED]: ['deleted', 'added'],
-}
 
-export { extensions, filedStatus, newline, fieldMapping }
+export { extensions, filedStatus, newline }
