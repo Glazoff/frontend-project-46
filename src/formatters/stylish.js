@@ -1,4 +1,4 @@
-import { newline, fieldMapping } from '../const.js'
+import { newline, fieldMapping } from '../const'
 import isObject from '../utils/isObject.js'
 
 const badgeMapping = {
@@ -7,59 +7,55 @@ const badgeMapping = {
   only: ' ',
 }
 
-const formatValue = (value, replacer, depth) => {
+const checkAst = (value) => {
+  if (!isObject(value)) return false
+  return 'diffList' in value && Array.isArray(value.diffList)
+}
+
+const createIndents = (replacer, depth) => ({
+  currentIndent: replacer.repeat(depth),
+  bracketIndent: replacer.repeat(depth - 1),
+})
+
+const stringify = (value, depth, replacer) => {
   if (!isObject(value)) {
-    if (value === null) return 'null'
-    return String(value)
+    return value === null ? 'null' : String(value)
   }
 
-  const currentIndent = replacer.repeat(depth)
-  const bracketIndent = replacer.repeat(depth - 1)
+  const { currentIndent, bracketIndent } = createIndents(replacer, depth)
 
-  const lines = Object.entries(value).map(([key, val]) => {
-    const formattedValue = formatValue(val, replacer, depth + 1)
-    return `${currentIndent}${key}: ${formattedValue}`
+  const lines = Object.entries(value).flatMap(([key, val]) => {
+    return `${currentIndent}${key}: ${stringify(val, depth + 1, replacer)}`
   })
 
-  return ['{', ...lines, `${bracketIndent}}`].join(newline)
+  return ['{', ...lines, bracketIndent].join(newline) + '}'
 }
 
 export default function stylish(ast, replacer = '    ') {
-  const iter = (diffList, depth) => {
-    const currentIndent = replacer.repeat(depth)
-    const bracketIndent = replacer.repeat(depth - 1)
+  const iter = (diffs, depth) => {
+    const { currentIndent, bracketIndent } = createIndents(replacer, depth)
 
-    const lines = diffList.map((item) => {
-      const { name, body } = item
+    const lines = diffs.flatMap((diff) => {
+      const { body, name } = diff
       const { type, value } = body
-      const fields = fieldMapping[type]
+      const fileds = fieldMapping[type]
 
-      if (type === 'modified') {
-        const oldFormatted = formatValue(value.deleted, replacer, depth + 1)
-        const newFormatted = formatValue(value.added, replacer, depth + 1)
-        return [
-          `${currentIndent.slice(0, -2)}- ${name}: ${oldFormatted}`,
-          `${currentIndent.slice(0, -2)}+ ${name}: ${newFormatted}`,
-        ].join(newline)
-      }
-
-      return fields.map((field) => {
+      const line = fileds.flatMap((field) => {
         const badge = badgeMapping[field]
-        const fieldValue = value[field]
+        const currentValue = value[field]
 
-        if (isObject(fieldValue) && fieldValue.diffList) {
-          const nested = iter(fieldValue.diffList, depth + 1)
-          return `${currentIndent.slice(0, -2)}${badge} ${name}: ${nested}`
-        }
-        else {
-          const formattedValue = formatValue(fieldValue, replacer, depth + 1)
-          return `${currentIndent.slice(0, -2)}${badge} ${name}: ${formattedValue}`
-        }
-      }).join(newline)
+        const nested = checkAst(currentValue)
+          ? iter(currentValue.diffList, currentValue.depth)
+          : stringify(currentValue, depth + 1, replacer)
+
+        return `${currentIndent.slice(0, -2)}${badge} ${name}: ${nested}`
+      })
+
+      return line
     })
 
-    return ['{', ...lines.flat(), `${bracketIndent}}`].join(newline)
+    return ['{', ...lines, bracketIndent].join(newline) + '}'
   }
 
-  return iter(ast.diffList, 1)
+  return iter(ast.diffList, ast.depth)
 }
