@@ -5,4 +5,4 @@
 [![Actions Status](https://github.com/Glazoff/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Glazoff/frontend-project-46/actions)
 
 ### demo
-https://asciinema.org/a/if8igWEIhGeSNZ74bidL9NOnQ
+https://asciinema.org/a/3OkpKqw9Un95TZPFy3FL4oPwn
