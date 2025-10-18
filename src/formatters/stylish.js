@@ -1,4 +1,4 @@
-import { newline, fieldMapping } from '../const'
+import { newline, fieldMapping } from '../const.js'
 import isObject from '../utils/isObject.js'
 
 const badgeMapping = {

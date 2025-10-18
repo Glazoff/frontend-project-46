@@ -3,6 +3,7 @@ import _ from 'lodash'
 import parserFile from './ParserFile.js'
 import isObject from './utils/isObject.js'
 import { filedStatus } from './const.js'
+import stylesh from './formatters/stylish.js'
 
 const { NOT_DIFF, ADDED, DELETED, MODIFIED } = filedStatus
 
@@ -26,7 +27,7 @@ function diff(firstData, secondData) {
         hasFirstKey: Object.hasOwn(obj1, key),
         hasSecondKey: Object.hasOwn(obj2, key),
         isSameValue: Object.is(obj1[key], obj2[key]),
-        isObjBath: isObject(obj1[key]) && isObject(obj2[key])
+        isObjBath: isObject(obj1[key]) && isObject(obj2[key]),
       }
 
       switch (true) {
@@ -53,7 +54,7 @@ function diff(firstData, secondData) {
 
       ast.diffList.push({
         name: key,
-        body
+        body,
       })
     }
 
@@ -67,12 +68,16 @@ export default function () {
   program
     .description('Compares two configuration files and shows a difference.')
     .option('-V, --version', 'output the version number')
-    .option('-f, --format [type]', 'output format')
-    .arguments('<filepath1> <filepath2>')
+    .option('-f, --format [type]', 'output format', 'stylish')
+    .arguments('<filepath1> <filepath2> ')
 
   program
-    .action((filepath1, filepath2) => {
-      console.log(diff(parserFile(filepath1), parserFile(filepath2)))
+    .action((filepath1, filepath2, options) => {
+      const result = diff(parserFile(filepath1), parserFile(filepath2))
+
+      if (options.format === 'stylish') {
+        console.log(stylesh(result))
+      }
     })
 
   if (process.argv.length > 2) {
