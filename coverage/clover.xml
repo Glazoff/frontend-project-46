@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1760824464547" clover="3.2.0">
+  <project timestamp="1760824464547" name="All files">
+    <metrics statements="111" coveredstatements="104" conditionals="51" coveredconditionals="45" methods="28" coveredmethods="26" elements="190" coveredelements="175" complexity="0" loc="111" ncloc="111" packages="5" files="15" classes="15"/>
+    <package name="src">
+      <metrics statements="48" coveredstatements="42" conditionals="24" coveredconditionals="19" methods="7" coveredmethods="5"/>
+      <file name="ParserFile.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/ParserFile.js">
+        <metrics statements="15" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="3"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="20" count="9" type="stmt"/>
+        <line num="22" count="9" type="stmt"/>
+        <line num="24" count="9" type="stmt"/>
+        <line num="25" count="9" type="stmt"/>
+        <line num="27" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="7" type="stmt"/>
+        <line num="31" count="7" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="34" count="6" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+      </file>
+      <file name="const.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/const.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="index.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/index.js">
+        <metrics statements="30" coveredstatements="25" conditionals="20" coveredconditionals="15" methods="3" coveredmethods="2"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="15" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+        <line num="15" count="15" type="stmt"/>
+        <line num="16" count="54" type="stmt"/>
+        <line num="25" count="54" type="stmt"/>
+        <line num="32" count="54" type="cond" truecount="5" falsecount="0"/>
+        <line num="34" count="9" type="stmt"/>
+        <line num="35" count="9" type="stmt"/>
+        <line num="37" count="12" type="stmt"/>
+        <line num="38" count="12" type="stmt"/>
+        <line num="40" count="12" type="stmt"/>
+        <line num="41" count="12" type="stmt"/>
+        <line num="42" count="12" type="stmt"/>
+        <line num="43" count="12" type="stmt"/>
+        <line num="45" count="6" type="stmt"/>
+        <line num="46" count="6" type="stmt"/>
+        <line num="47" count="6" type="stmt"/>
+        <line num="49" count="15" type="stmt"/>
+        <line num="50" count="15" type="stmt"/>
+        <line num="51" count="15" type="stmt"/>
+        <line num="54" count="54" type="stmt"/>
+        <line num="60" count="15" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="69" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="73" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="74" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.formatters">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/formatters/index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.formatters.plain">
+      <metrics statements="35" coveredstatements="34" conditionals="13" coveredconditionals="12" methods="12" coveredmethods="12"/>
+      <file name="const.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/formatters/plain/const.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="index.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/formatters/plain/index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="plain.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/formatters/plain/plain.js">
+        <metrics statements="11" coveredstatements="10" conditionals="5" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="18" type="stmt"/>
+        <line num="14" count="18" type="stmt"/>
+        <line num="15" count="18" type="stmt"/>
+        <line num="17" count="18" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+      </file>
+      <file name="util.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/formatters/plain/util.js">
+        <metrics statements="23" coveredstatements="23" conditionals="8" coveredconditionals="8" methods="9" coveredmethods="9"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="11" type="stmt"/>
+        <line num="15" count="33" type="stmt"/>
+        <line num="16" count="33" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="33" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="29" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="22" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="18" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="30" count="14" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="7" type="stmt"/>
+        <line num="35" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="11" type="stmt"/>
+        <line num="40" count="11" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.formatters.stylish">
+      <metrics statements="24" coveredstatements="24" conditionals="7" coveredconditionals="7" methods="7" coveredmethods="7"/>
+      <file name="const.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/formatters/stylish/const.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+      <file name="index.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/formatters/stylish/index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="stylish.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/formatters/stylish/stylish.js">
+        <metrics statements="14" coveredstatements="14" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="4"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="10" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="11" count="36" type="stmt"/>
+        <line num="12" count="36" type="stmt"/>
+        <line num="13" count="36" type="stmt"/>
+        <line num="15" count="36" type="stmt"/>
+        <line num="16" count="44" type="stmt"/>
+        <line num="17" count="44" type="stmt"/>
+        <line num="19" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="44" type="stmt"/>
+        <line num="26" count="36" type="stmt"/>
+        <line num="29" count="10" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+      </file>
+      <file name="util.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/formatters/stylish/util.js">
+        <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <line num="4" count="24" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="54" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="40" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="14" type="stmt"/>
+        <line num="16" count="14" type="stmt"/>
+        <line num="17" count="18" type="stmt"/>
+        <line num="20" count="14" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.utils">
+      <metrics statements="4" coveredstatements="4" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
+      <file name="index.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/utils/index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="isAstNode.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/utils/isAstNode.js">
+        <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="51" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="20" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="isObject.js" path="/Users/evgenijglazov/hexlet/frontend-project-46/src/utils/isObject.js">
+        <metrics statements="1" coveredstatements="1" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="1" count="210" type="cond" truecount="3" falsecount="0"/>
+      </file>
+    </package>
+  </project>
+</coverage>
