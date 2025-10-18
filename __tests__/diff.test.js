@@ -3,6 +3,7 @@ import fs from 'fs'
 import { diff } from '../src/index.js'
 import parserFile from '../src/ParserFile.js'
 import stylish from '../src/formatters/stylish.js'
+import plain from '../src/formatters/plain.js'
 
 const paths = {
   json: {
@@ -18,7 +19,10 @@ const paths = {
 const fileNotFound = './sameFile.json'
 const incorrectExtensionFile = '__fixtures__/unsupported-format.xml'
 
-const correctResult = fs.readFileSync('__fixtures__/result.txt', { encoding: 'utf-8' })
+const correctResults = {
+  stylish: fs.readFileSync('__fixtures__/result.txt', { encoding: 'utf-8' }),
+  plain: fs.readFileSync('__fixtures__/result_plain.txt', { encoding: 'utf-8' }),
+}
 
 afterEach(() => {
   jest.restoreAllMocks()
@@ -27,13 +31,13 @@ afterEach(() => {
 test('files json', () => {
   const { first, second } = paths.json
 
-  expect(stylish(diff(parserFile(first), parserFile(second)))).toBe(correctResult)
+  expect(stylish(diff(parserFile(first), parserFile(second)))).toBe(correctResults.stylish)
 })
 
 test('files yml', () => {
   const { first, second } = paths.yml
 
-  expect(stylish(diff(parserFile(first), parserFile(second)))).toBe(correctResult)
+  expect(stylish(diff(parserFile(first), parserFile(second)))).toBe(correctResults.stylish)
 })
 
 test('file not found', () => {
@@ -60,4 +64,10 @@ test('fail readFileSync in parserFile', () => {
   const result = parserFile(first)
   expect(consoleErrorSpy).toHaveBeenCalled()
   expect(result).toBeUndefined()
+})
+
+test('format plain', () => {
+  const { first, second } = paths.json
+
+  expect(plain(diff(parserFile(first), parserFile(second)))).toBe(correctResults.plain)
 })

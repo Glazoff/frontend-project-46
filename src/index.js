@@ -4,6 +4,7 @@ import parserFile from './ParserFile.js'
 import isObject from './utils/isObject.js'
 import { filedStatus } from './const.js'
 import stylesh from './formatters/stylish.js'
+import plain from './formatters/plain.js'
 
 const { NOT_DIFF, ADDED, DELETED, MODIFIED } = filedStatus
 
@@ -77,6 +78,10 @@ export default function () {
 
       if (options.format === 'stylish') {
         console.log(stylesh(result))
+      }
+
+      if (options.format === 'plain') {
+        console.log(plain(result))
       }
     })
 
