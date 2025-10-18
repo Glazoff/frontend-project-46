@@ -1,10 +1,10 @@
 import { program } from 'commander'
 import _ from 'lodash'
+import { isObject } from './utils/index.js'
 import parserFile from './ParserFile.js'
-import isObject from './utils/isObject.js'
 import { filedStatus } from './const.js'
-import stylesh from './formatters/stylish.js'
-import plain from './formatters/plain.js'
+import stylesh from './formatters/stylish'
+import plain from './formatters/plain'
 
 const { NOT_DIFF, ADDED, DELETED, MODIFIED } = filedStatus
 
