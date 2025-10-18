@@ -2,13 +2,14 @@
 import { program } from 'commander'
 import { diff } from '../src/index.js'
 import { formatter } from '../src/utils/index.js'
-import parserFile from '../src/ParserFile.js'
+import parserFile from '../src/parserFile.js'
+import { formatData } from '../src/utils/index.js'
 
 function gendiff() {
   program
     .description('Compares two configuration files and shows a difference.')
     .option('-V, --version', 'output the version number')
-    .option('-f, --format [type]', 'output format', 'stylish')
+    .option('-f, --format [type]', 'output format', formatData.STYLISH)
     .arguments('<filepath1> <filepath2> ')
 
   program

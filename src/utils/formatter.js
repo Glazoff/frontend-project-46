@@ -1,11 +1,16 @@
 import { stylish, plain } from '../formatters/index.js'
 
+export const formatData = {
+  STYLISH: 'stylish',
+  PLAIN: 'plain',
+}
+
 const formatter = (format, data) => {
-  if (format === 'stylish') {
+  if (format === formatData.STYLISH) {
     return stylish(data)
   }
 
-  if (format === 'plain') {
+  if (format === formatData.PLAIN) {
     return plain(data)
   }
 }
