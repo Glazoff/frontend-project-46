@@ -1,0 +1,235 @@
+{
+  "depth": 1,
+  "diffList": [
+    {
+      "name": "common",
+      "body": {
+        "type": "not diff",
+        "value": {
+          "deleted": null,
+          "only": {
+            "depth": 2,
+            "diffList": [
+              {
+                "name": "follow",
+                "body": {
+                  "type": "added",
+                  "value": {
+                    "deleted": null,
+                    "only": null,
+                    "added": false
+                  }
+                }
+              },
+              {
+                "name": "setting1",
+                "body": {
+                  "type": "not diff",
+                  "value": {
+                    "deleted": null,
+                    "only": "Value 1",
+                    "added": null
+                  }
+                }
+              },
+              {
+                "name": "setting2",
+                "body": {
+                  "type": "deleted",
+                  "value": {
+                    "deleted": 200,
+                    "only": null,
+                    "added": null
+                  }
+                }
+              },
+              {
+                "name": "setting3",
+                "body": {
+                  "type": "modified",
+                  "value": {
+                    "deleted": true,
+                    "only": null,
+                    "added": null
+                  }
+                }
+              },
+              {
+                "name": "setting4",
+                "body": {
+                  "type": "added",
+                  "value": {
+                    "deleted": null,
+                    "only": null,
+                    "added": "blah blah"
+                  }
+                }
+              },
+              {
+                "name": "setting5",
+                "body": {
+                  "type": "added",
+                  "value": {
+                    "deleted": null,
+                    "only": null,
+                    "added": {
+                      "key5": "value5"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "setting6",
+                "body": {
+                  "type": "not diff",
+                  "value": {
+                    "deleted": null,
+                    "only": {
+                      "depth": 3,
+                      "diffList": [
+                        {
+                          "name": "doge",
+                          "body": {
+                            "type": "not diff",
+                            "value": {
+                              "deleted": null,
+                              "only": {
+                                "depth": 4,
+                                "diffList": [
+                                  {
+                                    "name": "wow",
+                                    "body": {
+                                      "type": "modified",
+                                      "value": {
+                                        "deleted": "",
+                                        "only": null,
+                                        "added": "so much"
+                                      }
+                                    }
+                                  }
+                                ]
+                              },
+                              "added": null
+                            }
+                          }
+                        },
+                        {
+                          "name": "key",
+                          "body": {
+                            "type": "not diff",
+                            "value": {
+                              "deleted": null,
+                              "only": "value",
+                              "added": null
+                            }
+                          }
+                        },
+                        {
+                          "name": "ops",
+                          "body": {
+                            "type": "added",
+                            "value": {
+                              "deleted": null,
+                              "only": null,
+                              "added": "vops"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "added": null
+                  }
+                }
+              }
+            ]
+          },
+          "added": null
+        }
+      }
+    },
+    {
+      "name": "group1",
+      "body": {
+        "type": "not diff",
+        "value": {
+          "deleted": null,
+          "only": {
+            "depth": 2,
+            "diffList": [
+              {
+                "name": "baz",
+                "body": {
+                  "type": "modified",
+                  "value": {
+                    "deleted": "bas",
+                    "only": null,
+                    "added": "bars"
+                  }
+                }
+              },
+              {
+                "name": "foo",
+                "body": {
+                  "type": "not diff",
+                  "value": {
+                    "deleted": null,
+                    "only": "bar",
+                    "added": null
+                  }
+                }
+              },
+              {
+                "name": "nest",
+                "body": {
+                  "type": "modified",
+                  "value": {
+                    "deleted": {
+                      "key": "value"
+                    },
+                    "only": null,
+                    "added": "str"
+                  }
+                }
+              }
+            ]
+          },
+          "added": null
+        }
+      }
+    },
+    {
+      "name": "group2",
+      "body": {
+        "type": "deleted",
+        "value": {
+          "deleted": {
+            "abc": 12345,
+            "deep": {
+              "id": 45
+            }
+          },
+          "only": null,
+          "added": null
+        }
+      }
+    },
+    {
+      "name": "group3",
+      "body": {
+        "type": "added",
+        "value": {
+          "deleted": null,
+          "only": null,
+          "added": {
+            "deep": {
+              "id": {
+                "number": 45
+              }
+            },
+            "fee": 100500
+          }
+        }
+      }
+    }
+  ]
+}

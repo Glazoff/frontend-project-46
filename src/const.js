@@ -11,6 +11,7 @@ const filedStatus = {
 const typeFormat = {
   STYLISH: 'stylish',
   PLAIN: 'plain',
+  JSON: 'json',
 }
 
 export { extensions, filedStatus, newline, typeFormat }
