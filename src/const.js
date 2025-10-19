@@ -8,4 +8,9 @@ const filedStatus = {
   MODIFIED: 'modified',
 }
 
-export { extensions, filedStatus, newline }
+const typeFormat = {
+  STYLISH: 'stylish',
+  PLAIN: 'plain',
+}
+
+export { extensions, filedStatus, newline, typeFormat }

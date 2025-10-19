@@ -1,7 +1,7 @@
 import { expect, jest, test } from '@jest/globals'
 import fs from 'fs'
 import { diff } from '../src/index.js'
-import parserFile from '../src/parserFile.js'
+import parser from '../src/parser.js'
 import { stylish, plain } from '../src/formatters/index.js'
 
 const paths = {
@@ -30,26 +30,26 @@ afterEach(() => {
 test('files json', () => {
   const { first, second } = paths.json
 
-  expect(stylish(diff(parserFile(first), parserFile(second)))).toBe(correctResults.stylish)
+  expect(stylish(diff(parser(first), parser(second)))).toBe(correctResults.stylish)
 })
 
 test('files yml', () => {
   const { first, second } = paths.yml
 
-  expect(stylish(diff(parserFile(first), parserFile(second)))).toBe(correctResults.stylish)
+  expect(stylish(diff(parser(first), parser(second)))).toBe(correctResults.stylish)
 })
 
 test('file not found', () => {
-  expect(() => parserFile(fileNotFound))
+  expect(() => parser(fileNotFound))
     .toThrow('File not found')
 })
 
 test('support extensions file', () => {
-  expect(() => parserFile(incorrectExtensionFile))
+  expect(() => parser(incorrectExtensionFile))
     .toThrow('Not support extensions file')
 })
 
-test('fail readFileSync in parserFile', () => {
+test('fail readFileSync in parser', () => {
   const { first } = paths.yml
 
   const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => { })
@@ -60,7 +60,7 @@ test('fail readFileSync in parserFile', () => {
     throw new Error('Permission denied')
   })
 
-  const result = parserFile(first)
+  const result = parser(first)
   expect(consoleErrorSpy).toHaveBeenCalled()
   expect(result).toBeUndefined()
 })
@@ -68,5 +68,5 @@ test('fail readFileSync in parserFile', () => {
 test('format plain', () => {
   const { first, second } = paths.json
 
-  expect(plain(diff(parserFile(first), parserFile(second)))).toBe(correctResults.plain)
+  expect(plain(diff(parser(first), parser(second)))).toBe(correctResults.plain)
 })

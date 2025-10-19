@@ -1,7 +1,8 @@
 import _ from 'lodash'
-import { isObject, formatter, formatData } from './utils/index.js'
-import parserFile from './parserFile.js'
-import { filedStatus } from './const.js'
+import { isObject } from './utils/index.js'
+import parser from './parser.js'
+import formatter from './formatter.js'
+import { filedStatus, typeFormat } from './const.js'
 
 const { NOT_DIFF, ADDED, DELETED, MODIFIED } = filedStatus
 
@@ -62,8 +63,8 @@ export function diff(firstData, secondData) {
   return iter(firstData, secondData)
 }
 
-export default function (firstData, secondData, formatName = formatData.STYLISH) {
-  const result = diff(parserFile(firstData), parserFile(secondData))
+export default function (firstData, secondData, formatName = typeFormat.STYLISH) {
+  const result = diff(parser(firstData), parser(secondData))
 
   return formatter(formatName, result)
 }
