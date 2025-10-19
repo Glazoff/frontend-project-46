@@ -2,7 +2,7 @@ import { expect, jest, test } from '@jest/globals'
 import fs from 'fs'
 import { diff } from '../src/index.js'
 import parser from '../src/parser.js'
-import { stylish, plain } from '../src/formatters/index.js'
+import { stylish, plain, json } from '../src/formatters/index.js'
 
 const paths = {
   json: {
@@ -21,6 +21,7 @@ const incorrectExtensionFile = '__fixtures__/unsupported-format.xml'
 const correctResults = {
   stylish: fs.readFileSync('__fixtures__/result.txt', { encoding: 'utf-8' }),
   plain: fs.readFileSync('__fixtures__/result_plain.txt', { encoding: 'utf-8' }),
+  json: fs.readFileSync('__fixtures__/result_json.txt', { encoding: 'utf-8' }),
 }
 
 afterEach(() => {
@@ -69,4 +70,11 @@ test('format plain', () => {
   const { first, second } = paths.json
 
   expect(plain(diff(parser(first), parser(second)))).toBe(correctResults.plain)
+})
+
+test('format json', () => {
+  const { first, second } = paths.json
+  const diffs = diff(parser(first), parser(second))
+
+  expect(json(diffs, ' ', 2)).toBe(correctResults.json)
 })

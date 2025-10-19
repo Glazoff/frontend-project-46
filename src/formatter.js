@@ -1,4 +1,4 @@
-import { stylish, plain } from './formatters/index.js'
+import { stylish, plain, json } from './formatters/index.js'
 import { typeFormat } from './const.js'
 
 const formatter = (format, data) => {
@@ -8,6 +8,10 @@ const formatter = (format, data) => {
 
   if (format === typeFormat.PLAIN) {
     return plain(data)
+  }
+
+  if (format === typeFormat.JSON) {
+    return json(data, ' ', 2)
   }
 }
 
