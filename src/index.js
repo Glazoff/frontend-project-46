@@ -12,7 +12,7 @@ export function diff(firstData, secondData) {
 
     const ast = { depth, diffList: [] }
 
-    for (const key of keys) {
+    ast.diffList = keys.map((key) => {
       const body = {
         type: NOT_DIFF,
         value: {
@@ -51,11 +51,11 @@ export function diff(firstData, secondData) {
           break
       }
 
-      ast.diffList.push({
+      return {
         name: key,
         body,
-      })
-    }
+      }
+    })
 
     return ast
   }
